@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/views/check/check.html=UTF-8
+encoding//WebRoot/WEB-INF/views/person/person.html=UTF-8
+encoding//WebRoot/WEB-INF/views/personGroup/group.html=UTF-8
+encoding//WebRoot/WEB-INF/views/personGroup/newGroup.html=UTF-8
+encoding//WebRoot/WEB-INF/views/schedule/scheduler.html=UTF-8
+encoding//WebRoot/WEB-INF/views/statics/nonework.html=UTF-8
+encoding//src/com/giscafer/general/HomeServlet.java=UTF-8
+encoding//src/com/giscafer/schedule/config/ScheduleConfig.java=UTF-8
+encoding//src/com/giscafer/schedule/index/IndexController.java=UTF-8
+encoding//src/com/giscafer/schedule/login/LoginController.java=UTF-8
+encoding/<project>=UTF-8

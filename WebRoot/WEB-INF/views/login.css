@@ -1,0 +1,24 @@
+body{
+    background: url("../images/custom/bg1.jpg");
+    animation-name:myfirst;
+    animation-duration:12s;
+    /*閸欐ɑ宕查弮鍫曟？*/
+    animation-delay:2s;
+    /*閸斻劎鏁惧锟筋潗閺冨爼妫�/
+    animation-iteration-count:infinite;
+    /*娑撳绔撮崨銊︽埂瀵邦亞骞嗛幘顓熸杹*/
+    animation-play-state:running;
+    /*閸斻劎鏁惧锟筋潗鏉╂劘顢�/
+}
+@keyframes myfirst
+{
+    0%   {background:url("../images/custom/bg1.jpg");}
+    34%  {background:url("../images/custom/bg2.jpg");}
+    67%  {background:url("../images/custom/bg3.jpg");}
+    100% {background:url("../images/custom/bg1.jpg");}
+}
+.form{background: rgba(255,255,255,0.2);width:400px;margin:120px auto;}
+/*闂冩潙濂�/
+.fa{display: inline-block;top: 27px;left: 6px;position: relative;color: #ccc;}
+input[type="text"],input[type="password"]{padding-left:26px;}
+.checkbox{padding-left:21px;}

@@ -1,0 +1,89 @@
+<div class="header">
+    <div class="stats">
+    </div>
+    <h1 class="page-title">休假统计</h1>
+    <ul class="breadcrumb">
+        <li><a href="./">Home</a> </li>
+        <li class="active">休假统计</li>
+    </ul>
+</div>
+  <div class="input-group" style="width: 219px;">
+      <input type="text" name="test" placeholder="查询个人休假情况" class="input-sm form-control"> <span class="input-group-btn">
+     <button type="button" id="SerchPerson" class="btn btn-sm btn-primary">搜索</button> </span>
+ </div>
+  <div style='height:100%'>
+         <canvas id="myChart" height="100%"></canvas>
+ </div>
+<script>
+
+// 使用
+$(function() {
+	seajs.config({
+		 base: "./",
+	        paths: {
+	            'app': 'app',
+	            'module': 'public/js/modules',
+	            'common': 'public/js/common',
+	            'js': 'public/js'
+	        },
+		  alias: {
+		    'echarts': 'public/js/modules/echart/echarts.min.js',
+		    'chart':'public/js/modules/echart/Chart.js',
+		    "jquery": "public/js/jquery-2.1.1.min.js",
+		    'easyuijs':'public/js/modules/easyui/jquery.easyui.min.js'
+		  }
+		});
+
+		seajs.use(['js/config', 'common/util', 'module/eventproxy','echarts','chart','easyuijs'], function(config, util, EventProxy) {
+			echatApp();
+			  //设置系统跟路径
+	        window.hostUrl = config.options.hostUrl;
+
+	        $("#SerchPerson").click(function(){
+	        	debugger;
+	        	var text = $(" input[ name='test' ] ").val();
+	        	
+	        	
+	        	 $.post( window.hostUrl+"getnone",{text:text},function(result){
+	        		    
+	        		  });
+	        	
+	        })
+		});
+		
+});
+
+
+
+  
+function echatApp(){
+	var ctx = document.getElementById('myChart').getContext('2d');
+	var chart = new Chart(ctx, {
+	    // The type of chart we want to create
+	    type: 'line',
+
+	    // The data for our dataset
+	    data: {
+	        labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月","八月","九月","十月","十一月","十二月"],
+	        datasets: [{
+	            label: "各月休假情况",
+	            backgroundColor: 'rgb(255, 99, 132)',
+	            borderColor: 'rgb(255, 99, 132)',
+	            data: [0, 10, 5, 2, 20, 30, 45,60,30,50,10,40],
+	        }]
+	    },
+
+	    // Configuration options go here
+	    options: {
+	    	   scales: {
+	               yAxes: [{
+	                   ticks: {
+	                       beginAtZero:true
+	                   }
+	               }]
+	           }
+	    }
+	});
+}       
+
+</script>

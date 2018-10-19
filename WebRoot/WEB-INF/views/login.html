@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="utf-8">
+    <title>login</title>
+    
+   <script type="text/javascript" src="./public/js/jquery-2.1.1.min.js"></script>
+   <link rel="stylesheet" href="./public/js/modules/bootstrap/css/bootstrap.min.css">
+   <link rel="stylesheet" href="./public/font-awesome/css/font-awesome.min.css">
+   <script type="text/javascript" src="./public/js/modules/bootstrap/js/bootstrap.min.js"></script>
+   <#include "common/include_head.html"/>
+   <style type="text/css">
+   body{
+    background: url("./public/images/custom/bg1.jpg");
+    animation-name:myfirst;
+    animation-duration:12s;
+    animation-delay:0;
+    animation-iteration-count:infinite;
+    animation-play-state:running;
+}
+@keyframes myfirst
+{
+    0%   {background:url("./public/images/custom/bg1.jpg");}
+    34%  {background:url("./public/images/custom/bg2.jpg");}
+    67%  {background:url("./public/images/custom/bg3.jpg");}
+    100% {background:url("./public/images/custom/bg1.jpg");}
+}
+.form{background: rgba(255,255,255,0.2);width:400px;margin:120px auto;}
+.fa{display: inline-block;top: 27px;left: 6px;position: relative;color: #ccc;}
+input[type="text"],input[type="password"]{padding-left:26px;}
+.checkbox{padding-left:21px;}
+   </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form row">
+            <div class="form-horizontal col-md-offset-3" id="login_form">
+                <h3 class="form-title">LOGIN</h3>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <i class="fa fa-user fa-lg"></i>
+                        <input class="form-control required" type="text" placeholder="Username" id="username" name="username" autofocus="autofocus" maxlength="20"/>
+                    </div>
+                    <div class="form-group">
+                            <i class="fa fa-lock fa-lg"></i>
+                            <input class="form-control required" type="password" placeholder="Password" id="password" name="password" maxlength="8"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox">
+                            <input type="checkbox" name="remember" value="1"/>记住我
+                        </label>
+                    </div>
+                    <div class="form-group col-md-offset-9">
+                        <button type="submit" class="btn btn-success pull-right"  id="loginto" name="submit">登录</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <#include "common/include_footer.html"/>
+
+
+     
+<script type="text/javascript">
+/*seajs模块化*/
+(function() {
+    seajs.config({
+        base: "./",
+        paths: {
+            'app': 'app',
+            'module': 'public/js/modules',
+            'common': 'public/js/common',
+            'js': 'public/js'
+        },
+        alias: {
+            "jquery": "module/jquery/1.10.1/jquery.js",
+            "easyui": "module/easyui/jquery.easyui.min.js",
+        }
+    });
+    // 加载入口模块
+
+    seajs.use(['js/config', 'common/util', 'module/eventproxy'], function(config, util, EventProxy) {
+        //设置系统跟路径
+        window.hostUrl = config.options.hostUrl;
+
+        $("#loginto").click(function(){
+        	
+       var username = 	$("#username").val();
+       var password =	$("#password").val();
+        	
+        	
+        	  $.ajax({
+                  url: window.hostUrl+"loginUser",
+                  async: false,
+                  type: 'GET',
+                  data:{username:username,password:password},
+                  dataType: 'json',
+                  success:function (msg) {
+                	  if(msg=="1"){
+                		  window.location.href = window.hostUrl+"toindex";
+                	  }else{
+                		  alert("网络异常");
+                	  }
+                  }
+              })
+        	
+        		 
+        	
+        })
+    });
+})();
+
+
+      
+</script>
+</body>
+</html>
